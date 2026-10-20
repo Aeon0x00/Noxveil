@@ -1,0 +1,18 @@
+services:
+  noxveilvpn-postgres:
+    image: postgres:18-alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ${PROJECT_ROOT}/_out/pgdata:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    restart: always
+    
+  noxveilvpn-postgres-migrate:
+    image: migrate/migrate:v4.19.1
+    volumes:
+     - ${PROJECT_ROOT}/migrations:/migrations
+    

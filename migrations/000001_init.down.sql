@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS subsriptions;
+DROP TABLE IF EXISTS users;
